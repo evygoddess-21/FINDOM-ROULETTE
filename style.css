@@ -1,0 +1,16 @@
+body {
+  background: transparent;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+#wheel {
+  font-size: 120px;
+  transition: transform 3s ease-out;
+}
+
+#result {
+  margin-top: 20px;
+  font-size: 28px;
+  color: white;
+}
