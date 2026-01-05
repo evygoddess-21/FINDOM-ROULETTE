@@ -14,8 +14,8 @@ body {
 }
 
 #wheel {
-  width: 100%;
-  height: 100%;
+  width: 50%;
+  height: 50%;
   border-radius: 50%;
   background: conic-gradient(
     #ff5c5c 0deg 60deg,
