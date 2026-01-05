@@ -1,23 +1,19 @@
-const prizes = [
-  "Premio 1",
-  "Premio 2",
-  "Premio 3",
-  "Premio Especial"
-];
+let rotation = 0;
 
-function spinWheel() {
-  const wheel = document.getElementById("wheel");
-  const result = document.getElementById("result");
+// CONEXIÓN WEBSOCKET
+const socket = new WebSocket("WSS_DEL_LISTENER");
 
-  const angle = Math.floor(Math.random() * 360) + 720;
-  wheel.style.transform = `rotate(${angle}deg)`;
+socket.onmessage = (event) => {
+  const data = JSON.parse(event.data);
 
-  const prize = prizes[Math.floor(Math.random() * prizes.length)];
-  setTimeout(() => {
-    result.textContent = prize;
-  }, 3000);
+  if (data.type === "tip") {
+    spin();
+  }
+};
+
+function spin() {
+  const extra = Math.floor(Math.random() * 360);
+  rotation += 1440 + extra;
+  document.getElementById("wheel").style.transform =
+    `rotate(${rotation}deg)`;
 }
-
-window.addEventListener("message", e => {
-  if (e.data === "SPIN") spinWheel();
-});
