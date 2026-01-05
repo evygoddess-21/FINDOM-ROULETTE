@@ -1,13 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Ruleta</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Ruleta OBS</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="wheel">🎡</div>
-  <div id="result"></div>
+  <div id="container">
+    <div id="wheel"></div>
+    <div id="pointer">▼</div>
+  </div>
+
+  <!-- Botón para probar manualmente -->
+  <button onclick="spin()">Girar la ruleta</button>
+
   <script src="script.js"></script>
 </body>
 </html>
