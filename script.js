@@ -1,15 +1,33 @@
 let rotation = 0;
 
+// Define los premios que quieres
+const premios = [
+  "555TK",
+  "1000TK",
+  "LICK FLOOR AND 100TK",
+  "444TK",
+  "280TK",
+  "500TK"
+];
+
+// Cada segmento ocupa este ángulo (360 / cantidad de premios)
+const segmento = 360 / premios.length;
+
 function spin() {
-  const extra = Math.floor(Math.random() * 360);
-  rotation += 1440 + extra;
+  // Elegimos un premio aleatorio
+  const indice = Math.floor(Math.random() * premios.length);
+
+  // Calculamos el ángulo donde debe caer
+  const angulo = indice * segmento + Math.random() * segmento;
+
+  // Aumentamos la rotación total
+  rotation += 1440 + angulo; // 1440 = 4 giros completos
+
   document.getElementById("wheel").style.transform =
     `rotate(${rotation}deg)`;
-}
 
-// PRUEBA: girar con la tecla G
-document.addEventListener("keydown", (e) => {
-  if (e.key === "g") {
-    spin();
-  }
-});
+  // Mostrar qué premio salió después de la animación
+  setTimeout(() => {
+    alert(`¡Ganaste: ${premios[indice]}!`);
+  }, 4000); // coincide con la duración de la animación
+}
